@@ -5,21 +5,21 @@
   
 
   
-  <title>Http协议 | Hexo</title>
+  <title>Http协议 | 迷茫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简述http协议：    http协议是无状态的，    http包括持久连接和非持久连接：        非持久连接：每次传输都需要单独建立一次TCP连接        持久连接：只需建立一次TCP连接，客户端和服务器可一直请求和响应TCP/IP 三次握手:客户端发出SYN包加一个序号m，服务端收到之后将收到的序号加一并发送ACK(m+1)＋SYN包带一个新产生的序号n一同返回给客户端，客户端收">
+  <meta name="description" content="简述http协议：    浏览器向服务器发送请求，服务器向浏览器返回html文本，基于的就是http协议,http基于TCP协议，http分为请求和响应两部分，请求又分为请求行、请求头和请求体，响应分为响应行、响应头和响应体    http协议是无状态的，    http包括持久连接和非持久连接：        非持久连接：每次传输都需要单独建立一次TCP连接        持久连接：只需建立一次">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Http协议">
 <meta property="og:url" content="http://yoursite.com/2019/01/03/Http协议/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="简述http协议：    http协议是无状态的，    http包括持久连接和非持久连接：        非持久连接：每次传输都需要单独建立一次TCP连接        持久连接：只需建立一次TCP连接，客户端和服务器可一直请求和响应TCP/IP 三次握手:客户端发出SYN包加一个序号m，服务端收到之后将收到的序号加一并发送ACK(m+1)＋SYN包带一个新产生的序号n一同返回给客户端，客户端收">
+<meta property="og:site_name" content="迷茫">
+<meta property="og:description" content="简述http协议：    浏览器向服务器发送请求，服务器向浏览器返回html文本，基于的就是http协议,http基于TCP协议，http分为请求和响应两部分，请求又分为请求行、请求头和请求体，响应分为响应行、响应头和响应体    http协议是无状态的，    http包括持久连接和非持久连接：        非持久连接：每次传输都需要单独建立一次TCP连接        持久连接：只需建立一次">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-03T08:22:35.000Z">
+<meta property="og:updated_time" content="2019-02-07T10:27:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Http协议">
-<meta name="twitter:description" content="简述http协议：    http协议是无状态的，    http包括持久连接和非持久连接：        非持久连接：每次传输都需要单独建立一次TCP连接        持久连接：只需建立一次TCP连接，客户端和服务器可一直请求和响应TCP/IP 三次握手:客户端发出SYN包加一个序号m，服务端收到之后将收到的序号加一并发送ACK(m+1)＋SYN包带一个新产生的序号n一同返回给客户端，客户端收">
+<meta name="twitter:description" content="简述http协议：    浏览器向服务器发送请求，服务器向浏览器返回html文本，基于的就是http协议,http基于TCP协议，http分为请求和响应两部分，请求又分为请求行、请求头和请求体，响应分为响应行、响应头和响应体    http协议是无状态的，    http包括持久连接和非持久连接：        非持久连接：每次传输都需要单独建立一次TCP连接        持久连接：只需建立一次">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="迷茫" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -38,7 +38,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">迷茫</a>
       </h1>
       
     </div>
@@ -86,12 +86,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简述http协议：<br>    http协议是无状态的，<br>    http包括持久连接和非持久连接：<br>        非持久连接：每次传输都需要单独建立一次TCP连接<br>        持久连接：只需建立一次TCP连接，客户端和服务器可一直请求和响应<br>TCP/IP 三次握手:客户端发出SYN包加一个序号m，服务端收到之后将收到的序号加一并发送ACK(m+1)＋SYN包带一个新产生的序号n一同返回给客户端，客户端收到之后将序号加一并返回ACK(n+1)包<br>        四次挥手:主动方发出FIN包带一个序号m，关闭主动方的连接，被动方收到之后发送ACK包带序号m+1，被动方再次发送FIN包并带一个序号,关闭被动方的连接，主动方收到后发送ACK包并将收到的序号加一<br>        网络七层模型:物理层 数据链路层 网络层 传输层   会话层  表示层 应用层<br>        TCP四层模型:数据链路层  网络层 传输层  应用层<br>        缓存:强制缓存  协商缓存  查看缓存相关头信息cache-control expires看是否满足强制缓存，如果不满足携带缓存相关头信息请求服务器，服务器查看之后是告知直接从缓存读取还是返回最新的资源内容。<br>        http2和http1.1的区别:<br>            1.1 的头信息是文本格式的，2的头信息和数据都是二进制的。<br>            2可以复用TCP连接，如果一个请求的数据量过大，可以先把已处理的数据先返回给客户端，然后暂时挂起这个请求，先接收别的请求,最后再回头处理这个耗时的请求<br>            2可以给每个数据包一个标识，数据包可以不按顺序发送，取消发送数据的时候可以发送一个信号，而不用关掉TCP连接<br>            2可以让服务器主动推送给客户端资源，例如一些静态资源<br>            2头信息用gzip进行压缩，并且客户端和服务端共同维护一张头信息表，所有字段都会生成一个索引号，以后就不用 发送同样的字段了</p>
+        <p>简述http协议：<br>    浏览器向服务器发送请求，服务器向浏览器返回html文本，基于的就是http协议,http基于TCP协议，http分为请求和响应两部分，请求又分为请求行、请求头和请求体，响应分为响应行、响应头和响应体<br>    http协议是无状态的，<br>    http包括持久连接和非持久连接：<br>        非持久连接：每次传输都需要单独建立一次TCP连接<br>        持久连接：只需建立一次TCP连接，客户端和服务器可一直请求和响应<br>TCP/IP 三次握手:客户端发出SYN包加一个序号m，服务端收到之后将收到的序号加一并发送ACK(m+1)＋SYN包带一个新产生的序号n一同返回给客户端，客户端收到之后将序号加一并返回ACK(n+1)包<br>        四次挥手:主动方发出FIN包带一个序号m，关闭主动方的连接，被动方收到之后发送ACK包带序号m+1，被动方再次发送FIN包并带一个序号,关闭被动方的连接，主动方收到后发送ACK包并将收到的序号加一<br>        网络七层模型:物理层 数据链路层 网络层 传输层   会话层  表示层 应用层<br>        TCP四层模型:数据链路层  网络层 传输层  应用层<br>        缓存:强制缓存  协商缓存  查看缓存相关头信息cache-control expires看是否满足强制缓存，如果不满足携带缓存相关头信息请求服务器，服务器查看之后是告知直接从缓存读取还是返回最新的资源内容。<br>http2和http1.1的区别:<br>            1.1 的头信息是文本格式的，2的头信息和数据都是二进制的。<br>            2可以复用TCP连接，如果一个请求的数据量过大，可以先把已处理的数据先返回给客户端，然后暂时挂起这个请求，先接收别的请求,最后再回头处理这个耗时的请求<br>            2可以给每个数据包一个标识，数据包可以不按顺序发送，取消发送数据的时候可以发送一个信号，而不用关掉TCP连接<br>            2可以让服务器主动推送给客户端资源，例如一些静态资源<br>            2头信息用gzip进行压缩，并且客户端和服务端共同维护一张头信息表，所有字段都会生成一个索引号，以后就不用 发送同样的字段了<br>http1.1 和 http1.0的区别:<br>    1.1可以复用TCP连接，以加快传输速度</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/Http协议/" data-id="cjqgg7ntk00017lfy6nvsk724" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/Http协议/" data-id="cjrzzowii00039d8drme3n4nn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -131,7 +131,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -144,23 +144,23 @@
       <ul>
         
           <li>
+            <a href="/2019/02/11/JS基础知识/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/05/Redux/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/04/正则/">正则</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/03/杂项/">杂项</a>
           </li>
         
           <li>
             <a href="/2019/01/03/Git/">Git</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/hexo搭建博客/">hexo搭建博客</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/页面渲染原理/">页面渲染原理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/事件循环/">事件循环</a>
           </li>
         
       </ul>

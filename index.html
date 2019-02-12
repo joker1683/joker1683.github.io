@@ -5,17 +5,17 @@
   
 
   
-  <title>Hexo</title>
+  <title>迷茫</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="迷茫">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="迷茫">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="迷茫">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="迷茫" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,7 +34,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">迷茫</a>
       </h1>
       
     </div>
@@ -61,6 +61,118 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-JS基础知识" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/11/JS基础知识/" class="article-date">
+  <time datetime="2019-02-11T07:30:58.000Z" itemprop="datePublished">2019-02-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JS中使用typeof能得到的哪些类型？<br>    string number boolean undefined object  function  一共6种</p>
+<p>JS变量按照存储方式分为哪些类型，并描述其特点<br>值类型<br>    var a = 100;<br>    b = a;<br>    a = 200;<br>    console.log(b);  //b = 100<br>    引用类型<br>    var obj1 = {a:100};<br>    obj2 = obj1;<br>    obj1.a = 200;<br>    console.log(obj2.a); //obj2.a = 200</p>
+<p>如何理解JSON<br>    JSON就是一个JS对象<br>    JSON.stringify({a:10});<br>    JSON.parse(‘{“a”:10}’)</p>
+<p>用于判断引用类型属于哪个构造函数<br>    a instanceof Array</p>
+<p>所有的引用类型（数组、对象、函数）都可以自由扩展属性，除了null  例如：function fn() {}  fn.a = 100;</p>
+<p>所有的引用类型（数组、对象、函数），都有一个<strong>proto</strong>属性，属性值是一个普通的对象<br><strong>proto</strong>叫做隐式原型<br>所有的函数，都有一个prototype属性，属性值也是一个普通的对象<br>prototype为显示原型<br>所有的引用类型（数组、对象、函数），<strong>proto</strong>属性值指向<br>它的构造函数的”prototype”属性值<br>当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，<br>那么会去它的<strong>proto</strong>(即它的构造函数的prototype)中寻找。</p>
+<p>循环对象自身的属性</p>
+<pre><code>for(var item in f) {
+    //高级浏览器已经在for in 中屏蔽了来自原型的属性
+    //但是这里建议大家还是加上这个判断，保证程序的健壮性
+    if(f.hasOwnProperty(item)) {
+        console.log(item)
+    }
+}
+</code></pre><p>描述new一个对象的过程<br>    新建一个对象<br>    给这个对象添加属性<br>    返回这个对象</p>
+<p>//闭包实际应用中主要于封装变量，收敛权限<br>    function isFirstLoad() {<br>    var _list = [];<br>    return function(id) {<br>    if(_list.indexOf(id) &gt;= 0) {<br>    return false;<br>    } else {<br>    _list.push(id);<br>    return true;<br>    }<br>    }<br>    }<br>    var xxx = isFirstLoad();<br>    xxx(10);<br>    xxx(20);<br>    xxx(10);</p>
+<p>所有“等待的情况”都需要异步<br>    前端使用异步的场景<br>        定时任务：setTimeout setInterval<br>        网络请求：ajax请求，动态<img>加载<br>        事件绑定<br>        console.log(’start’)<br>        $.get(‘./data1.json’,function(data){<br>            console.log(data);<br>        })<br>        console.log(‘end’)<br>        <img>加载示例<br>        console.log(’start’)<br>        var img = document.createElement(‘img’)<br>        img.onload = function() {<br>            console.log(‘loaded’)<br>        }<br>        img.src = ‘/xxx.png’<br>        console.log(‘end’)</p>
+<p>Date.now()  获取当前时间毫秒数<br>    var dt = new Date()<br>    dt.getTime()<br>    dt.getFullYear()<br>    dt.getMonth()<br>    dt.getDate()<br>    dt.getHours()<br>    dt.getMinutes()<br>    dt.getSeconds()<br>    Math.random()</p>
+<p>DOM可以理解为：<br>    浏览器把拿到的html代码，结构化一个浏览器能识别并且js可操作的一个模型而已<br>    var pList = document.querySelectorAll(‘p’)<br>    console.log(p.nodeName)<br>    console.log(p.nodeType)<br>    document.getElementsByName查找的是有name属性的，不是标签<br>    nodeType 属性返回以数字值返回指定节点的节点类型。<br>    如果节点是元素节点，则 nodeType 属性将返回 1。<br>    如果节点是属性节点，则 nodeType 属性将返回 2。文本节点返回3.<br>    querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。<br>    获取父元素<br>    parentElement<br>    获取子元素<br>    childNodes</p>
+<p>ajax<br>    var xhr = new XMLHttpRequest();<br>    xhr.open(‘GET’,’/api’,false);<br>    xhr.onreadystatechange = function() {<br>    if(xhr.readystate === 4) {//表示请求已完成<br>    if(xhr.state === 200) {<br>    console.log(xhr.responseText);<br>    }<br>    }<br>    }</p>
+<p>但是有三个标签允许跨域加载资源<br>    <img><br>    <link><script></p>
+<p>iOS safari隐藏模式下<br>    localStorage.getItem 会报错<br>    建议统一使用try-catch封装</p>
+<p>git diff 只能看改的文件<br>git是分为三部分，一部分是你自己的文件，另外一个是缓存区，最后一个是本地库。当你修改了自己的文件后，你会git add xx将修改保存到缓存区，然后再用commit推送修改到本地库中。</p>
+<p>CommonJS不会异步加载JS，而是同步一次性加载出来</p>
+</script></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/11/JS基础知识/" data-id="cjs01wqjf00007qfyu7ytkzs0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Redux" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/05/Redux/" class="article-date">
+  <time datetime="2019-01-05T12:56:20.000Z" itemprop="datePublished">2019-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/05/Redux/" data-id="cjrzzowir00099d8dqd4kob9u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-正则" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/04/正则/" class="article-date">
+  <time datetime="2019-01-04T06:01:35.000Z" itemprop="datePublished">2019-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/04/正则/">正则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/04/正则/" data-id="cjrzzowj4000g9d8deqgh02b5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-杂项" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
@@ -89,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/杂项/" data-id="cjqgg7ntx00087lfyyunh3oir" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/杂项/" data-id="cjrzzowix000c9d8d1q9c3jeb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -121,11 +233,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>git config –global user.name “用户名”<br>git config –global user.email “邮箱”<br>ssh-keygen -t rsa -C “<a href="mailto:xxxxx@xxxxx.com" target="_blank" rel="noopener">xxxxx@xxxxx.com</a>“<br>cat ~/.ssh/id_rsa.pub<br>git init<br>git add .<br>git commit -m ‘备注’<br>fatal: remote origin already exists.<br>git remote rm origin<br>git remote add origin <a href="mailto:git@gitee.com" target="_blank" rel="noopener">git@gitee.com</a>:shiqingqing/test.git<br>refusing to merge unrelated histories，无法pull<br>git pull origin  master –allow-unrelated-histories<br>git push -u origin master<br>git branch  newBranch<br>gti checkout newBranch<br>必需先改个东西push一下才能生效<br>git status  可查看当前分支<br>如果你只需要删除磁盘上的 .DS_Store，可以使用下面的命令来删除当前目录及其子目录下的所有.DS_Store 文件<br>find . -name ‘*.DS_Store’ -type f -delete<br>git reset –hard be06bce6d940f69fec52d07e924dff66a8c4b383  本地回退<br>git log 查看提交纪录</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/Git/" data-id="cjqgg7ntg00007lfy0hlfo34n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/Git/" data-id="cjrzzowie00019d8dqwgy35tv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,12 +270,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hexo init blog<br>cd blog<br>npm install<br>hexo s<br>hexo new “name”<br>hexo clean<br>hexo g<br>hexo d</p>
+        <p>npm install hexo-cli -g   安装hexo<br>hexo init blog<br>cd blog<br>npm install<br>hexo s<br>hexo new “name”<br>hexo clean<br>hexo g<br>hexo d</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/hexo搭建博客/" data-id="cjqgg7ntv00077lfy5rr14nie" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/hexo搭建博客/" data-id="cjrzzowip00079d8dffx2p1je" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/页面渲染原理/" data-id="cjqgg7nun000g7lfyq6hrbt9x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/页面渲染原理/" data-id="cjrzzowjg000i9d8d6ij5lk2v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/事件循环/" data-id="cjqgg7nu9000b7lfyu8gvrwa7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/事件循环/" data-id="cjrzzowiq00089d8dh7zdt85m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -273,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/BTC-块级格式化上下文/" data-id="cjqgg7ntn00027lfyx1en2013" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/BTC-块级格式化上下文/" data-id="cjrzzowi900009d8dvb0mzaow" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,118 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/React性能优化/" data-id="cjqgg7ntr00057lfy115ko9rg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Vue和React的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/03/Vue和React的区别/" class="article-date">
-  <time datetime="2019-01-03T06:56:37.000Z" itemprop="datePublished">2019-01-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/Vue和React的区别/">Vue和React的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>React数据不可变,单向数据流<br>    vue是基于可变数据的，支持双向绑定<br>    React是类式的组件写法<br>    vue是声明式的写法<br>    React做的很少，很多由社区来完成<br>    Vue内置了很多功能，致力于开发简单<br>    React是通过JS操作一切<br>        Vue是基于单组件模版</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/Vue和React的区别/" data-id="cjqgg7nts00067lfycjw3s5l2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-React生命周期" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/03/React生命周期/" class="article-date">
-  <time datetime="2019-01-03T06:56:15.000Z" itemprop="datePublished">2019-01-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/React生命周期/">React生命周期</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>componentWillMount() render() componentDidMount()<br>    componentWillReceiveProps()  shouldComponentUpdate() [性能优化点,prop或state改变触发]<br>    componentWillUpdate()<br>    render()<br>    componentDidUpdate()<br>    componentWillUnmount()</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/React生命周期/" data-id="cjqgg7ntq00047lfyftruzhm4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-函数柯里化" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/03/函数柯里化/" class="article-date">
-  <time datetime="2019-01-03T06:53:56.000Z" itemprop="datePublished">2019-01-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/函数柯里化/">函数柯里化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>function add(a,b,c) {<br>        return a+b+c<br>    }<br>    function add(a) {<br>        return function(b) {<br>            return function(c) {<br>                return a + b + c<br>            }<br>        }<br>    }<br>    add(1,2,3)<br>    add(1)(2)(3)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/函数柯里化/" data-id="cjqgg7nu000097lfyqcgbu7wi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/React性能优化/" data-id="cjrzzowil00059d8d1cj00ozd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -454,7 +456,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -467,23 +469,23 @@
       <ul>
         
           <li>
+            <a href="/2019/02/11/JS基础知识/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/05/Redux/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/04/正则/">正则</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/03/杂项/">杂项</a>
           </li>
         
           <li>
             <a href="/2019/01/03/Git/">Git</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/hexo搭建博客/">hexo搭建博客</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/页面渲染原理/">页面渲染原理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/事件循环/">事件循环</a>
           </li>
         
       </ul>
