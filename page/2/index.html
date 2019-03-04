@@ -62,34 +62,24 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Vue和React的区别" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-sass" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/Vue和React的区别/" class="article-date">
-  <time datetime="2019-01-03T06:56:37.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/02/12/sass/" class="article-date">
+  <time datetime="2019-02-12T03:12:45.000Z" itemprop="datePublished">2019-02-12</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/Vue和React的区别/">Vue和React的区别</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>React数据不可变,单向数据流<br>    vue是基于可变数据的，支持双向绑定<br>    React是类式的组件写法<br>    vue是声明式的写法<br>    React做的很少，很多由社区来完成<br>    Vue内置了很多功能，致力于开发简单<br>    React是通过JS操作一切<br>        Vue是基于单组件模版</p>
+        <p>解决Error: ENOENT: no such file or directory, scandir ‘D:\IdeaWork\code-front-jet\node_modules.npmins<br>解决方案是执行以下方法：<br>npm rebuild node-sass</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/Vue和React的区别/" data-id="cjs1617fl0008dbfytd6pdr1s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/sass/" data-id="cjstr3tbz000dhyfy3lfd6ds4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,34 +89,55 @@
 
 
   
-    <article id="post-React生命周期" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-JS基础知识" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/React生命周期/" class="article-date">
-  <time datetime="2019-01-03T06:56:15.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/02/11/JS基础知识/" class="article-date">
+  <time datetime="2019-02-11T07:30:58.000Z" itemprop="datePublished">2019-02-11</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/React生命周期/">React生命周期</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>componentWillMount() render() componentDidMount()<br>    componentWillReceiveProps()  shouldComponentUpdate() [性能优化点,prop或state改变触发]<br>    componentWillUpdate()<br>    render()<br>    componentDidUpdate()<br>    componentWillUnmount()</p>
-
+        <p>JS中使用typeof能得到的哪些类型？<br>    string number boolean undefined object  function  一共6种</p>
+<p>JS变量按照存储方式分为哪些类型，并描述其特点<br>值类型<br>    var a = 100;<br>    b = a;<br>    a = 200;<br>    console.log(b);  //b = 100<br>    引用类型<br>    var obj1 = {a:100};<br>    obj2 = obj1;<br>    obj1.a = 200;<br>    console.log(obj2.a); //obj2.a = 200</p>
+<p>如何理解JSON<br>    JSON就是一个JS对象<br>    JSON.stringify({a:10});<br>    JSON.parse(‘{“a”:10}’)</p>
+<p>用于判断引用类型属于哪个构造函数<br>    a instanceof Array</p>
+<p>所有的引用类型（数组、对象、函数）都可以自由扩展属性，除了null  例如：function fn() {}  fn.a = 100;</p>
+<p>所有的引用类型（数组、对象、函数），都有一个<strong>proto</strong>属性，属性值是一个普通的对象<br><strong>proto</strong>叫做隐式原型<br>所有的函数，都有一个prototype属性，属性值也是一个普通的对象<br>prototype为显示原型<br>所有的引用类型（数组、对象、函数），<strong>proto</strong>属性值指向<br>它的构造函数的”prototype”属性值<br>当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，<br>那么会去它的<strong>proto</strong>(即它的构造函数的prototype)中寻找。</p>
+<p>循环对象自身的属性</p>
+<pre><code>for(var item in f) {
+    //高级浏览器已经在for in 中屏蔽了来自原型的属性
+    //但是这里建议大家还是加上这个判断，保证程序的健壮性
+    if(f.hasOwnProperty(item)) {
+        console.log(item)
+    }
+}
+</code></pre><p>描述new一个对象的过程<br>    新建一个对象<br>    给这个对象添加属性<br>    返回这个对象</p>
+<p>//闭包实际应用中主要于封装变量，收敛权限<br>    function isFirstLoad() {<br>    var _list = [];<br>    return function(id) {<br>    if(_list.indexOf(id) &gt;= 0) {<br>    return false;<br>    } else {<br>    _list.push(id);<br>    return true;<br>    }<br>    }<br>    }<br>    var xxx = isFirstLoad();<br>    xxx(10);<br>    xxx(20);<br>    xxx(10);</p>
+<p>所有“等待的情况”都需要异步<br>    前端使用异步的场景<br>        定时任务：setTimeout setInterval<br>        网络请求：ajax请求，动态<img>加载<br>        事件绑定<br>        console.log(’start’)<br>        $.get(‘./data1.json’,function(data){<br>            console.log(data);<br>        })<br>        console.log(‘end’)<br>        <img>加载示例<br>        console.log(’start’)<br>        var img = document.createElement(‘img’)<br>        img.onload = function() {<br>            console.log(‘loaded’)<br>        }<br>        img.src = ‘/xxx.png’<br>        console.log(‘end’)</p>
+<p>Date.now()  获取当前时间毫秒数<br>    var dt = new Date()<br>    dt.getTime()<br>    dt.getFullYear()<br>    dt.getMonth()<br>    dt.getDate()<br>    dt.getHours()<br>    dt.getMinutes()<br>    dt.getSeconds()<br>    Math.random()</p>
+<p>DOM可以理解为：<br>    浏览器把拿到的html代码，结构化一个浏览器能识别并且js可操作的一个模型而已<br>    var pList = document.querySelectorAll(‘p’)<br>    console.log(p.nodeName)<br>    console.log(p.nodeType)<br>    document.getElementsByName查找的是有name属性的，不是标签<br>    nodeType 属性返回以数字值返回指定节点的节点类型。<br>    如果节点是元素节点，则 nodeType 属性将返回 1。<br>    如果节点是属性节点，则 nodeType 属性将返回 2。文本节点返回3.<br>    querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。<br>    获取父元素<br>    parentElement<br>    获取子元素<br>    childNodes</p>
+<p>ajax<br>    var xhr = new XMLHttpRequest();<br>    xhr.open(‘GET’,’/api’,false);<br>    xhr.onreadystatechange = function() {<br>    if(xhr.readystate === 4) {//表示请求已完成<br>    if(xhr.state === 200) {<br>    console.log(xhr.responseText);<br>    }<br>    }<br>    }</p>
+<p>但是有三个标签允许跨域加载资源<br>    <img><br>    <link><script></p>
+<p>iOS safari隐藏模式下<br>    localStorage.getItem 会报错<br>    建议统一使用try-catch封装</p>
+<p>CommonJS不会异步加载JS，而是同步一次性加载出来<br>Date.parse()  解析一个日期时间字符串，并返回 1970/1/1 午夜距离该日期时间的毫秒数</p>
+<p>parseInt  解析字符串返回一个整数</p>
+<p>function Parent() {<br>            this.name = “parent”;<br>        }<br>function Child() {<br>    Parent.call(this);<br>    this.name = “child”;<br>    Child.prototype = Object.create(Parent.prototype);<br>    Child.prototype.constructor = “Child”;<br>}</p>
+<p>this原理:this指针: 包裹this的函数是在哪个环境运行的，this就指向哪个环境 由于js函数是单独运行的，所以它可能有不同的执行环境，如果需要在函数体内部获取当前执行环境，就需要通过this来获取</p>
+<p>函数柯里化<br>function add(a,b,c) {<br>        return a+b+c<br>    }<br>function add(a) {<br>    return function(b) {<br>        return function(c) {<br>            return a + b + c<br>        }<br>    }<br>}<br>add(1,2,3)<br>add(1)(2)(3)</p>
+<p>csrf:在攻击者网站上伪造请求，执行用户不知道的操作  防范:验证码<br>xss: 提交js脚本   防范:过滤用户输入的内容<br>点击劫持:在攻击者网站上嵌入透明iframe 防范: 设置同源访问</p>
+<p>1.jsonp:利用script标签不受同源限制，urlj加个参数callback,客户端定义callback函数接收传过来的数据，服务端返回callback  callback的参数是json数据。<br>2.cors:Access-Control-Allow-Origin  withCredentials(可以发送cookie和http认证信息)</p>
+<p>页面渲染原理<br>1.解析html构建DOM树<br>2.解析CSS构建CSS规则树<br>3.DOM和CSSOM合并后形成render tree<br>4.浏览器开始布局<br>5.浏览器开始把内容画到屏幕上</p>
+<p>页面某个部分发生变化会影响布局而进行重排<br>页面改变颜色会引起重绘</p>
+<p>GUI渲染线程与JS引擎线程互斥</p>
+</script></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/React生命周期/" data-id="cjs1617fj0007dbfyevmt3m8b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/11/JS基础知识/" data-id="cjstr3taz0002hyfyxr07rzvv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,34 +147,23 @@
 
 
   
-    <article id="post-函数柯里化" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Redux" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/函数柯里化/" class="article-date">
-  <time datetime="2019-01-03T06:53:56.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/01/05/Redux/" class="article-date">
+  <time datetime="2019-01-05T12:56:20.000Z" itemprop="datePublished">2019-01-05</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/函数柯里化/">函数柯里化</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>function add(a,b,c) {<br>        return a+b+c<br>    }<br>    function add(a) {<br>        return function(b) {<br>            return function(c) {<br>                return a + b + c<br>            }<br>        }<br>    }<br>    add(1,2,3)<br>    add(1)(2)(3)</p>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/函数柯里化/" data-id="cjs1617fs000bdbfy6nhs3fwf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/05/Redux/" data-id="cjstr3tap0000hyfydkbjts64" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,10 +173,10 @@
 
 
   
-    <article id="post-跨域" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Git" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/跨域/" class="article-date">
-  <time datetime="2019-01-03T06:53:32.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/01/03/Git/" class="article-date">
+  <time datetime="2019-01-03T08:36:02.000Z" itemprop="datePublished">2019-01-03</time>
 </a>
     
   </div>
@@ -187,7 +187,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/跨域/">跨域</a>
+      <a class="article-title" href="/2019/01/03/Git/">Git</a>
     </h1>
   
 
@@ -195,12 +195,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.jsonp:利用script标签不受同源限制，urlj加个参数callback,客户端定义callback函数接收传过来的数据，服务端返回callback  callback的参数是json数据。<br>        2.cors:Access-Control-Allow-Origin  withCredentials(可以发送cookie和http认证信息)</p>
+        <p>git config –global user.name “用户名”<br>git config –global user.email “邮箱”<br>ssh-keygen -t rsa -C “<a href="mailto:xxxxx@xxxxx.com" target="_blank" rel="noopener">xxxxx@xxxxx.com</a>“<br>cat ~/.ssh/id_rsa.pub<br>git init  初始化之后才会有.git文件<br>git add .<br>git commit -m ‘备注’<br>fatal: remote origin already exists.<br>git remote rm origin<br>git remote add origin <a href="mailto:git@gitee.com" target="_blank" rel="noopener">git@gitee.com</a>:shiqingqing/test.git<br>refusing to merge unrelated histories，无法pull<br>git pull origin  master –allow-unrelated-histories<br>git push -u origin master<br>git branch  newBranch<br>gti checkout newBranch<br>必需先改个东西push一下才能生效<br>git status  可查看当前分支<br>如果你只需要删除磁盘上的 .DS_Store，可以使用下面的命令来删除当前目录及其子目录下的所有.DS_Store 文件<br>find . -name ‘*.DS_Store’ -type f -delete<br>git log 查看提交纪录<br>git reset –hard be06bce6d940f69fec52d07e924dff66a8c4b383  本地回退<br>git diff 只能看改的文件<br>git是分为三部分，一部分是你自己的文件，另外一个是缓存区，最后一个是本地库。当你修改了自己的文件后，你会git add xx将修改保存到缓存区，然后再用commit推送修改到本地库中。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/跨域/" data-id="cjs1617g1000hdbfyej5x1onz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/Git/" data-id="cjstr3taw0001hyfypzqzxz9v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo搭建博客" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/03/hexo搭建博客/" class="article-date">
+  <time datetime="2019-01-03T08:28:21.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/03/hexo搭建博客/">hexo搭建博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>npm install hexo-cli -g   安装hexo<br>hexo init blog<br>cd blog<br>npm install<br>hexo s<br>hexo new “name”<br>hexo clean<br>hexo g<br>hexo d</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/03/hexo搭建博客/" data-id="cjstr3tb50005hyfyhnz62gd9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,51 +269,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>1.减少http请求
-2.减少资源体积:1.优化js css代码 2.用gzip压缩
-3.加快网络传输速度:1.CDN  2.缓存
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/性能优化/" data-id="cjs1617ft000cdbfyi3oo07lh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-网络安全" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/03/网络安全/" class="article-date">
-  <time datetime="2019-01-03T06:53:15.000Z" itemprop="datePublished">2019-01-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/网络安全/">网络安全</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  csrf:在攻击者网站上伪造请求，执行用户不知道的操作  防范:验证码<br>                 xss: 提交js脚本   防范:过滤用户输入的内容<br>        点击劫持:在攻击者网站上嵌入透明iframe 防范: 设置同源访问</p>
+        <p>1.减少http请求<br>2.减少资源体积:1.优化js css代码 2.用gzip压缩<br>3.加快网络传输速度:1.CDN  2.缓存</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/网络安全/" data-id="cjs1617g3000idbfy2x02c7x0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/性能优化/" data-id="cjstr3tc4000ghyfyq7qy36sl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -308,7 +306,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>找出数组 arr </p>
+        <p>栈是后进先出<br>队列是先进先出</p>
+<p>深拷贝:function deepCopy(source,copy) {<br>                var copy = copy || {};<br>                for(var i in source) {<br>                    if(typeof source[i]  === “object”) {<br>                        copy = source[i].constructor === “Array”?[]:{}<br>                    } else {<br>                        copy[i] = source[i]<br>                    }<br>                }<br>                return copy;<br>                }<br> 浅拷贝:function shallowCopy(source) {<br>                var copy = {};<br>                 for(var i in source) {<br>                    copy[i] = source[i]<br>                }<br>                return copy;<br>              }</p>
+<p>isRepeat(arr) {  //判断数组内元素是否重复<br>    let hash = {};<br>    for(var i in arr) {<br>        if(hash[arr[i]]) {<br>            return true;<br>        }<br>        hash[arr[i]] = true;<br>    }<br>    return false;<br>}</p>
+<p>找出数组 arr </p>
 <pre><code>function duplicates(arr) {
     var result = [];
     arr.forEach(function(elem) {
@@ -349,85 +350,59 @@ console.log(resultDate);
 }
 var date = new Date();
 formatDate(date);
+
+ // cutString(str,len) {   //控制成16个汉字
+    //     if(str.length*2 &lt;= len) {
+    //         return str;
+    //     }
+    //     var strlen = 0;
+    //     var s = &quot;&quot;;
+    //     for(var i = 0;i &lt; str.length; i++) {
+    //         s = s + str.charAt(i);
+    //         if(!str.length%4) {
+    //             str = str + &apos; \n &apos;;
+    //         }
+    //         if (str.charCodeAt(i) &gt; 128) {
+    //             strlen = strlen + 2;
+    //             if(strlen &gt;= len){
+    //                 return s.substring(0,s.length-1) + &quot;...&quot;;
+    //             }
+    //         } else {
+    //             strlen = strlen + 1;
+    //             if(strlen &gt;= len){
+    //                 return s.substring(0,s.length-2) + &quot;...&quot;;
+    //             }
+    //         }
+    //     }
+    //     return s;
+    // },
+    // getNewline(val) {  
+    //     var str = new String(val);  
+    //     var bytesCount = 0;  
+    //     var s=&quot;&quot;;
+    //     for (var i = 0 ,n = str.length; i &lt; n; i++) {  
+    //         var c = str.charCodeAt(i);  
+    //         //统计字符串的字符长度
+    //         if ((c &gt;= 0x0001 &amp;&amp; c &lt;= 0x007e) || (0xff60&lt;=c &amp;&amp; c&lt;=0xff9f)) {  
+    //             bytesCount += 1;  
+    //         } else {  
+    //             bytesCount += 2;  
+    //         }
+    //         //换行
+    //         s += str.charAt(i);
+    //         if(bytesCount&gt;=8){  
+    //             s = s + &apos; \n &apos;;
+    //             //重置
+    //             bytesCount=0;
+    //         } 
+    //     }  
+    //     return s;  
+    // }, 
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/算法/" data-id="cjs1617g0000gdbfycf66v8e0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JS继承" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/03/JS继承/" class="article-date">
-  <time datetime="2019-01-03T06:52:42.000Z" itemprop="datePublished">2019-01-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/JS继承/">JS继承</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>function Parent() {<br>            this.name = “parent”;<br>        }<br>        function Child() {<br>            Parent.call(this);<br>            this.name = “child”;<br>            Child.prototype = Object.create(Parent.prototype);<br>            Child.prototype.constructor = “Child”;<br>        }</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/JS继承/" data-id="cjs1617fe0005dbfygyqvcjs7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-深拷贝和浅拷贝" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/03/深拷贝和浅拷贝/" class="article-date">
-  <time datetime="2019-01-03T06:48:48.000Z" itemprop="datePublished">2019-01-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/深拷贝和浅拷贝/">深拷贝和浅拷贝</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 深拷贝:function deepCopy(source,copy) {<br>                var copy = copy || {};<br>                for(var i in source) {<br>                    if(typeof source[i]  === “object”) {<br>                        copy = source[i].constructor === “Array”?[]:{}<br>                    } else {<br>                        copy[i] = source[i]<br>                    }<br>                }<br>                return copy;<br>                }<br> 浅拷贝:function shallowCopy(source) {<br>                var copy = {};<br>                 for(var i in source) {<br>                    copy[i] = source[i]<br>                }<br>                return copy;<br>              }</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/深拷贝和浅拷贝/" data-id="cjs1617fz000fdbfyqdw39f48" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/算法/" data-id="cjstr3tc3000fhyfyiwdh2qaa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,12 +434,12 @@ formatDate(date);
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简述http协议：<br>    浏览器向服务器发送请求，服务器向浏览器返回html文本，基于的就是http协议,http基于TCP协议，http分为请求和响应两部分，请求又分为请求行、请求头和请求体，响应分为响应行、响应头和响应体<br>    http协议是无状态的，<br>    http包括持久连接和非持久连接：<br>        非持久连接：每次传输都需要单独建立一次TCP连接<br>        持久连接：只需建立一次TCP连接，客户端和服务器可一直请求和响应<br>TCP/IP 三次握手:客户端发出SYN包加一个序号m，服务端收到之后将收到的序号加一并发送ACK(m+1)＋SYN包带一个新产生的序号n一同返回给客户端，客户端收到之后将序号加一并返回ACK(n+1)包<br>        四次挥手:主动方发出FIN包带一个序号m，关闭主动方的连接，被动方收到之后发送ACK包带序号m+1，被动方再次发送FIN包并带一个序号,关闭被动方的连接，主动方收到后发送ACK包并将收到的序号加一<br>        网络七层模型:物理层 数据链路层 网络层 传输层   会话层  表示层 应用层<br>        TCP四层模型:数据链路层  网络层 传输层  应用层<br>        缓存:强制缓存  协商缓存  查看缓存相关头信息cache-control expires看是否满足强制缓存，如果不满足携带缓存相关头信息请求服务器，服务器查看之后是告知直接从缓存读取还是返回最新的资源内容。<br>http2和http1.1的区别:<br>            1.1 的头信息是文本格式的，2的头信息和数据都是二进制的。<br>            2可以复用TCP连接，如果一个请求的数据量过大，可以先把已处理的数据先返回给客户端，然后暂时挂起这个请求，先接收别的请求,最后再回头处理这个耗时的请求<br>            2可以给每个数据包一个标识，数据包可以不按顺序发送，取消发送数据的时候可以发送一个信号，而不用关掉TCP连接<br>            2可以让服务器主动推送给客户端资源，例如一些静态资源<br>            2头信息用gzip进行压缩，并且客户端和服务端共同维护一张头信息表，所有字段都会生成一个索引号，以后就不用 发送同样的字段了<br>http1.1 和 http1.0的区别:<br>    1.1可以复用TCP连接，以加快传输速度</p>
+        <p>简述http协议：<br>    浏览器向服务器发送请求，服务器向浏览器返回html文本，基于的就是http协议,http基于TCP协议，http分为请求和响应两部分，请求又分为请求行、请求头和请求体，响应分为响应行、响应头和响应体<br>    http协议是无状态的，<br>    http包括持久连接和非持久连接：<br>        非持久连接：每次传输都需要单独建立一次TCP连接<br>        持久连接：只需建立一次TCP连接，客户端和服务器可一直请求和响应<br>TCP/IP 三次握手:客户端发出SYN包加一个序号m，服务端收到之后将收到的序号加一并发送ACK(m+1)＋SYN包带一个新产生的序号n一同返回给客户端，客户端收到之后将序号加一并返回ACK(n+1)包<br>        四次挥手:主动方发出FIN包带一个序号m，关闭主动方的连接，被动方收到之后发送ACK包带序号m+1，被动方再次发送FIN包并带一个序号,关闭被动方的连接，主动方收到后发送ACK包并将收到的序号加一<br>        网络七层模型:物理层 数据链路层 网络层 传输层   会话层  表示层 应用层<br>        TCP四层模型:数据链路层  网络层 传输层  应用层<br>        缓存:强制缓存  协商缓存  查看缓存相关头信息cache-control expires看是否满足强制缓存，如果不满足携带缓存相关头信息请求服务器，服务器查看之后是告知直接从缓存读取还是返回最新的资源内容。<br>http2和http1.1的区别:<br>            1.1 的头信息是文本格式的，2的头信息和数据都是二进制的。<br>            2可以复用TCP连接，如果一个请求的数据量过大，可以先把已处理的数据先返回给客户端，然后暂时挂起这个请求，先接收别的请求,最后再回头处理这个耗时的请求<br>            2可以给每个数据包一个标识，数据包可以不按顺序发送，取消发送数据的时候可以发送一个信号，而不用关掉TCP连接<br>            2可以让服务器主动推送给客户端资源，例如一些静态资源<br>            2头信息用gzip进行压缩，并且客户端和服务端共同维护一张头信息表，所有字段都会生成一个索引号，以后就不用 发送同样的字段了<br>http1.1 和 http1.0的区别:<br>    1.1可以复用TCP连接，以加快传输速度<br>http有几种请求方法:<br>    GET POST PUT DELETE OPTIONS HEAD CONNECT TRACE  一共八种<br>https协议的过程<br>    https协议由两部分组成 一是http 二是ssl/tls  也就是在http协议基础上又加了一层处理加密信息的模块，客户端和服务端传输的数据都是经过TLS加密过的。<br>    过程：<br>        发送客户端支持的加密协议及版本，ssl、tls<br>        服务端从中筛选合适的加密协议<br>        服务器端返回证书，证书中含有公钥<br>        客户端使用根证书验证证书合法性<br>        客户端生成对称密钥，通过证书中的公钥加密，发送到服务器端<br>        服务器端使用私钥解密，获取对称密钥，使用对称密钥加密数据<br>    证书可以使用自己生成，也可以向专门的https证书提供商进行购买。这两种的区别是自己生成的证书是不被浏览器信任的,所以当访问的时候回提示不安全的网站，需要点击信任之后才能继续访问<br>    因为浏览器中预置了一些https证书提供商的证书，在浏览器获取到服务器的https证书进行验证的时候就知道这个https证书是可信的；而自己生成的证书，浏览器获取到之后无法进行验证是否可信，所以就给出不安全的提示。<br>    非对称加密算法，非对称加密有一个秘钥对，叫做公钥和私钥，私钥自己持有，公钥可以公开的发送给使用的人。使用公钥进行加密的信息，只有和其配对的私钥可以解开。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/Http协议/" data-id="cjs1617fa0003dbfygi48d5ev" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/Http协议/" data-id="cjstr3tbn0007hyfytkvcexnq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -497,7 +472,7 @@ formatDate(date);
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -510,23 +485,23 @@ formatDate(date);
       <ul>
         
           <li>
-            <a href="/2019/02/11/JS基础知识/">(no title)</a>
+            <a href="/2019/03/03/React/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/05/Redux/">(no title)</a>
+            <a href="/2019/03/03/ES6/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/04/正则/">正则</a>
+            <a href="/2019/03/03/vuex/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/杂项/">杂项</a>
+            <a href="/2019/03/03/vue-router/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/Git/">Git</a>
+            <a href="/2019/03/02/css/">(no title)</a>
           </li>
         
       </ul>

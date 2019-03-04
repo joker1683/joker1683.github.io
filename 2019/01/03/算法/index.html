@@ -7,17 +7,17 @@
   
   <title>算法 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="找出数组 arr  function duplicates(arr) {     var result = [];     arr.forEach(function(elem) {         if(arr.indexOf(elem) !== arr.lastIndexOf(elem) &amp;amp;&amp;amp; result.indexOf(elem) === -1) {">
+  <meta name="description" content="栈是后进先出队列是先进先出 深拷贝:function deepCopy(source,copy) {                var copy = copy || {};                for(var i in source) {                    if(typeof source[i]  === “object”) {">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法">
 <meta property="og:url" content="http://yoursite.com/2019/01/03/算法/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="找出数组 arr  function duplicates(arr) {     var result = [];     arr.forEach(function(elem) {         if(arr.indexOf(elem) !== arr.lastIndexOf(elem) &amp;amp;&amp;amp; result.indexOf(elem) === -1) {">
+<meta property="og:description" content="栈是后进先出队列是先进先出 深拷贝:function deepCopy(source,copy) {                var copy = copy || {};                for(var i in source) {                    if(typeof source[i]  === “object”) {">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-11T08:47:06.000Z">
+<meta property="og:updated_time" content="2019-03-04T02:51:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法">
-<meta name="twitter:description" content="找出数组 arr  function duplicates(arr) {     var result = [];     arr.forEach(function(elem) {         if(arr.indexOf(elem) !== arr.lastIndexOf(elem) &amp;amp;&amp;amp; result.indexOf(elem) === -1) {">
+<meta name="twitter:description" content="栈是后进先出队列是先进先出 深拷贝:function deepCopy(source,copy) {                var copy = copy || {};                for(var i in source) {                    if(typeof source[i]  === “object”) {">
   
     <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -86,7 +86,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>找出数组 arr </p>
+        <p>栈是后进先出<br>队列是先进先出</p>
+<p>深拷贝:function deepCopy(source,copy) {<br>                var copy = copy || {};<br>                for(var i in source) {<br>                    if(typeof source[i]  === “object”) {<br>                        copy = source[i].constructor === “Array”?[]:{}<br>                    } else {<br>                        copy[i] = source[i]<br>                    }<br>                }<br>                return copy;<br>                }<br> 浅拷贝:function shallowCopy(source) {<br>                var copy = {};<br>                 for(var i in source) {<br>                    copy[i] = source[i]<br>                }<br>                return copy;<br>              }</p>
+<p>isRepeat(arr) {  //判断数组内元素是否重复<br>    let hash = {};<br>    for(var i in arr) {<br>        if(hash[arr[i]]) {<br>            return true;<br>        }<br>        hash[arr[i]] = true;<br>    }<br>    return false;<br>}</p>
+<p>找出数组 arr </p>
 <pre><code>function duplicates(arr) {
     var result = [];
     arr.forEach(function(elem) {
@@ -127,11 +130,59 @@ console.log(resultDate);
 }
 var date = new Date();
 formatDate(date);
+
+ // cutString(str,len) {   //控制成16个汉字
+    //     if(str.length*2 &lt;= len) {
+    //         return str;
+    //     }
+    //     var strlen = 0;
+    //     var s = &quot;&quot;;
+    //     for(var i = 0;i &lt; str.length; i++) {
+    //         s = s + str.charAt(i);
+    //         if(!str.length%4) {
+    //             str = str + &apos; \n &apos;;
+    //         }
+    //         if (str.charCodeAt(i) &gt; 128) {
+    //             strlen = strlen + 2;
+    //             if(strlen &gt;= len){
+    //                 return s.substring(0,s.length-1) + &quot;...&quot;;
+    //             }
+    //         } else {
+    //             strlen = strlen + 1;
+    //             if(strlen &gt;= len){
+    //                 return s.substring(0,s.length-2) + &quot;...&quot;;
+    //             }
+    //         }
+    //     }
+    //     return s;
+    // },
+    // getNewline(val) {  
+    //     var str = new String(val);  
+    //     var bytesCount = 0;  
+    //     var s=&quot;&quot;;
+    //     for (var i = 0 ,n = str.length; i &lt; n; i++) {  
+    //         var c = str.charCodeAt(i);  
+    //         //统计字符串的字符长度
+    //         if ((c &gt;= 0x0001 &amp;&amp; c &lt;= 0x007e) || (0xff60&lt;=c &amp;&amp; c&lt;=0xff9f)) {  
+    //             bytesCount += 1;  
+    //         } else {  
+    //             bytesCount += 2;  
+    //         }
+    //         //换行
+    //         s += str.charAt(i);
+    //         if(bytesCount&gt;=8){  
+    //             s = s + &apos; \n &apos;;
+    //             //重置
+    //             bytesCount=0;
+    //         } 
+    //     }  
+    //     return s;  
+    // }, 
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/算法/" data-id="cjs1617g0000gdbfycf66v8e0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/算法/" data-id="cjstr3tc3000fhyfyiwdh2qaa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,19 +191,19 @@ formatDate(date);
     
 <nav id="article-nav">
   
-    <a href="/2019/01/03/网络安全/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/03/性能优化/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          网络安全
+          性能优化
         
       </div>
     </a>
   
   
-    <a href="/2019/01/03/JS继承/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/03/Http协议/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JS继承</div>
+      <div class="article-nav-title">Http协议</div>
     </a>
   
 </nav>
@@ -176,7 +227,7 @@ formatDate(date);
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -189,23 +240,23 @@ formatDate(date);
       <ul>
         
           <li>
-            <a href="/2019/02/11/JS基础知识/">(no title)</a>
+            <a href="/2019/03/03/React/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/05/Redux/">(no title)</a>
+            <a href="/2019/03/03/ES6/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/04/正则/">正则</a>
+            <a href="/2019/03/03/vuex/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/杂项/">杂项</a>
+            <a href="/2019/03/03/vue-router/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/Git/">Git</a>
+            <a href="/2019/03/02/css/">(no title)</a>
           </li>
         
       </ul>

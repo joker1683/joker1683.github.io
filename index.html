@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-JS基础知识" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-React" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/02/11/JS基础知识/" class="article-date">
-  <time datetime="2019-02-11T07:30:58.000Z" itemprop="datePublished">2019-02-11</time>
+    <a href="/2019/03/03/React/" class="article-date">
+  <time datetime="2019-03-03T13:03:24.000Z" itemprop="datePublished">2019-03-03</time>
 </a>
     
   </div>
@@ -74,35 +74,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JS中使用typeof能得到的哪些类型？<br>    string number boolean undefined object  function  一共6种</p>
-<p>JS变量按照存储方式分为哪些类型，并描述其特点<br>值类型<br>    var a = 100;<br>    b = a;<br>    a = 200;<br>    console.log(b);  //b = 100<br>    引用类型<br>    var obj1 = {a:100};<br>    obj2 = obj1;<br>    obj1.a = 200;<br>    console.log(obj2.a); //obj2.a = 200</p>
-<p>如何理解JSON<br>    JSON就是一个JS对象<br>    JSON.stringify({a:10});<br>    JSON.parse(‘{“a”:10}’)</p>
-<p>用于判断引用类型属于哪个构造函数<br>    a instanceof Array</p>
-<p>所有的引用类型（数组、对象、函数）都可以自由扩展属性，除了null  例如：function fn() {}  fn.a = 100;</p>
-<p>所有的引用类型（数组、对象、函数），都有一个<strong>proto</strong>属性，属性值是一个普通的对象<br><strong>proto</strong>叫做隐式原型<br>所有的函数，都有一个prototype属性，属性值也是一个普通的对象<br>prototype为显示原型<br>所有的引用类型（数组、对象、函数），<strong>proto</strong>属性值指向<br>它的构造函数的”prototype”属性值<br>当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，<br>那么会去它的<strong>proto</strong>(即它的构造函数的prototype)中寻找。</p>
-<p>循环对象自身的属性</p>
-<pre><code>for(var item in f) {
-    //高级浏览器已经在for in 中屏蔽了来自原型的属性
-    //但是这里建议大家还是加上这个判断，保证程序的健壮性
-    if(f.hasOwnProperty(item)) {
-        console.log(item)
-    }
-}
-</code></pre><p>描述new一个对象的过程<br>    新建一个对象<br>    给这个对象添加属性<br>    返回这个对象</p>
-<p>//闭包实际应用中主要于封装变量，收敛权限<br>    function isFirstLoad() {<br>    var _list = [];<br>    return function(id) {<br>    if(_list.indexOf(id) &gt;= 0) {<br>    return false;<br>    } else {<br>    _list.push(id);<br>    return true;<br>    }<br>    }<br>    }<br>    var xxx = isFirstLoad();<br>    xxx(10);<br>    xxx(20);<br>    xxx(10);</p>
-<p>所有“等待的情况”都需要异步<br>    前端使用异步的场景<br>        定时任务：setTimeout setInterval<br>        网络请求：ajax请求，动态<img>加载<br>        事件绑定<br>        console.log(’start’)<br>        $.get(‘./data1.json’,function(data){<br>            console.log(data);<br>        })<br>        console.log(‘end’)<br>        <img>加载示例<br>        console.log(’start’)<br>        var img = document.createElement(‘img’)<br>        img.onload = function() {<br>            console.log(‘loaded’)<br>        }<br>        img.src = ‘/xxx.png’<br>        console.log(‘end’)</p>
-<p>Date.now()  获取当前时间毫秒数<br>    var dt = new Date()<br>    dt.getTime()<br>    dt.getFullYear()<br>    dt.getMonth()<br>    dt.getDate()<br>    dt.getHours()<br>    dt.getMinutes()<br>    dt.getSeconds()<br>    Math.random()</p>
-<p>DOM可以理解为：<br>    浏览器把拿到的html代码，结构化一个浏览器能识别并且js可操作的一个模型而已<br>    var pList = document.querySelectorAll(‘p’)<br>    console.log(p.nodeName)<br>    console.log(p.nodeType)<br>    document.getElementsByName查找的是有name属性的，不是标签<br>    nodeType 属性返回以数字值返回指定节点的节点类型。<br>    如果节点是元素节点，则 nodeType 属性将返回 1。<br>    如果节点是属性节点，则 nodeType 属性将返回 2。文本节点返回3.<br>    querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。<br>    获取父元素<br>    parentElement<br>    获取子元素<br>    childNodes</p>
-<p>ajax<br>    var xhr = new XMLHttpRequest();<br>    xhr.open(‘GET’,’/api’,false);<br>    xhr.onreadystatechange = function() {<br>    if(xhr.readystate === 4) {//表示请求已完成<br>    if(xhr.state === 200) {<br>    console.log(xhr.responseText);<br>    }<br>    }<br>    }</p>
-<p>但是有三个标签允许跨域加载资源<br>    <img><br>    <link><script></p>
-<p>iOS safari隐藏模式下<br>    localStorage.getItem 会报错<br>    建议统一使用try-catch封装</p>
-<p>git diff 只能看改的文件<br>git是分为三部分，一部分是你自己的文件，另外一个是缓存区，最后一个是本地库。当你修改了自己的文件后，你会git add xx将修改保存到缓存区，然后再用commit推送修改到本地库中。</p>
-<p>CommonJS不会异步加载JS，而是同步一次性加载出来</p>
-</script></p>
+        <p>Polyfill是一个js库，主要抚平不同浏览器之间对js实现的差异</p>
+<p>react性能优化:<br>    shouldComponentUpdate()  如果知道某些组件不需要更新，return false来跳过整个渲染过程</p>
+<p>react生命周期:<br>    componentWillMount() render() componentDidMount()<br>    componentWillReceiveProps()  shouldComponentUpdate() [性能优化点,prop或state改变触发]<br>    componentWillUpdate()<br>    render()<br>    componentDidUpdate()<br>    componentWillUnmount()</p>
+<p>Vue和React的区别<br>    React数据不可变,单向数据流<br>    vue是基于可变数据的，支持双向绑定<br>    React是类式的组件写法<br>    vue是声明式的写法<br>    React做的很少，很多由社区来完成<br>    Vue内置了很多功能，致力于开发简单<br>    React是通过JS操作一切<br>    Vue是基于单组件模版</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/11/JS基础知识/" data-id="cjs1617fc0004dbfygv29qp2e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/React/" data-id="cjstr3tb10003hyfy9pdykeqz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,10 +92,10 @@
 
 
   
-    <article id="post-Redux" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-ES6" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/05/Redux/" class="article-date">
-  <time datetime="2019-01-05T12:56:20.000Z" itemprop="datePublished">2019-01-05</time>
+    <a href="/2019/03/03/ES6/" class="article-date">
+  <time datetime="2019-03-03T11:24:14.000Z" itemprop="datePublished">2019-03-03</time>
 </a>
     
   </div>
@@ -124,11 +104,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>ES6 模块的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。</p>
+<p>Promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）<br>如果改变已经发生了，你再对Promise对象添加回调函数，也会立即得到这个结果。<br>这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。<br>Promise对象是一个构造函数<br>const promise = new Promise(function(resolve,reject) {<br>    if(‘success’) {<br>        resolve(value)<br>    } else {<br>        reject(error)<br>    }<br>})<br>resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。<br>立即 resolved 的 Promise 是在本轮事件循环的末尾执行</p>
+<p>从上面的实现还可以看到，finally方法总是会返回原来的值。<br>// resolve 的值是 undefined<br>Promise.resolve(2).then(() =&gt; {}, () =&gt; {})</p>
+<p>// resolve 的值是 2<br>Promise.resolve(2).finally(() =&gt; {})</p>
+<p>// reject 的值是 undefined<br>Promise.reject(3).then(() =&gt; {}, () =&gt; {})</p>
+<p>// reject 的值是 3<br>Promise.reject(3).finally(() =&gt; {})</p>
+<p>Promise.prototype.finally()  实现:<br>Promise.prototype.finally = function (callback) {<br>  let P = this.constructor;<br>  return this.then(<br>    value  =&gt; P.resolve(callback()).then(() =&gt; value),<br>    reason =&gt; P.resolve(callback()).then(() =&gt; { throw reason })<br>  );<br>};</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/05/Redux/" data-id="cjs1617ec0000dbfyf8rdgs03" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/ES6/" data-id="cjstr3tb30004hyfyytim0ifq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,33 +125,25 @@
 
 
   
-    <article id="post-正则" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-vuex" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/04/正则/" class="article-date">
-  <time datetime="2019-01-04T06:01:35.000Z" itemprop="datePublished">2019-01-04</time>
+    <a href="/2019/03/03/vuex/" class="article-date">
+  <time datetime="2019-03-03T09:02:41.000Z" itemprop="datePublished">2019-03-03</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/04/正则/">正则</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>this.$store.commit(types.DBNAME,dbName) 改变vuex变量的值</p>
+<p>computed:mapState([‘dbName’,’tableName’])  拿到vuex变量的值</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/04/正则/" data-id="cjs1617fx000edbfyacdchna2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/vuex/" data-id="cjstr3tc6000hhyfyay9loc0m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,34 +153,24 @@
 
 
   
-    <article id="post-杂项" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-vue-router" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/杂项/" class="article-date">
-  <time datetime="2019-01-03T09:53:18.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/03/03/vue-router/" class="article-date">
+  <time datetime="2019-03-03T08:45:54.000Z" itemprop="datePublished">2019-03-03</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/杂项/">杂项</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>$t vue国际化的语法</p>
+        <p>router-link tab属性  指定渲染什么标签<br>beforeRouteEnter</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/杂项/" data-id="cjs1617fv000ddbfykp45enk4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/vue-router/" data-id="cjstr3tbs000ahyfy6v456w9k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,34 +180,28 @@
 
 
   
-    <article id="post-Git" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-css" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/Git/" class="article-date">
-  <time datetime="2019-01-03T08:36:02.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/03/02/css/" class="article-date">
+  <time datetime="2019-03-02T13:02:53.000Z" itemprop="datePublished">2019-03-02</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/Git/">Git</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>git config –global user.name “用户名”<br>git config –global user.email “邮箱”<br>ssh-keygen -t rsa -C “<a href="mailto:xxxxx@xxxxx.com" target="_blank" rel="noopener">xxxxx@xxxxx.com</a>“<br>cat ~/.ssh/id_rsa.pub<br>git init<br>git add .<br>git commit -m ‘备注’<br>fatal: remote origin already exists.<br>git remote rm origin<br>git remote add origin <a href="mailto:git@gitee.com" target="_blank" rel="noopener">git@gitee.com</a>:shiqingqing/test.git<br>refusing to merge unrelated histories，无法pull<br>git pull origin  master –allow-unrelated-histories<br>git push -u origin master<br>git branch  newBranch<br>gti checkout newBranch<br>必需先改个东西push一下才能生效<br>git status  可查看当前分支<br>如果你只需要删除磁盘上的 .DS_Store，可以使用下面的命令来删除当前目录及其子目录下的所有.DS_Store 文件<br>find . -name ‘*.DS_Store’ -type f -delete<br>git reset –hard be06bce6d940f69fec52d07e924dff66a8c4b383  本地回退<br>git log 查看提交纪录</p>
+        <p>border:0.01rem solid #ccc;  边框的0.01rem在手机上会看不见，所以边框的0.01rem建议使用1px替代。</p>
+<p>background-size使用rem无效，建议：修改背景图大小不要卡死，使用百分比去控制，比如background-size: 100% auto;等</p>
+<p>当设计稿给出的元素边框为1~2px的<br>时候，一开始直接转换成rem,后来在某些设备上，元素根本没有显示边框。解决的方案一般是， 针对1px的边框，直接使用1px作为单位就好了。</p>
+<p>块级格式化上下文，可解决边距重叠，包裹浮动元素等问题</p>
+<p>因为dispaly:flex是流式布局，子元素有个flex-shrink属性，表示在父元素宽度不够的情况下是自动收缩不？0表示不自动收缩，1表示自动收缩；</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/Git/" data-id="cjs1617f30001dbfybaxxwl5m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/02/css/" data-id="cjstr3tbq0009hyfy47or1vdj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,34 +211,24 @@
 
 
   
-    <article id="post-hexo搭建博客" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-commonJS" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/hexo搭建博客/" class="article-date">
-  <time datetime="2019-01-03T08:28:21.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/03/01/commonJS/" class="article-date">
+  <time datetime="2019-03-01T09:03:51.000Z" itemprop="datePublished">2019-03-01</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/hexo搭建博客/">hexo搭建博客</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>npm install hexo-cli -g   安装hexo<br>hexo init blog<br>cd blog<br>npm install<br>hexo s<br>hexo new “name”<br>hexo clean<br>hexo g<br>hexo d</p>
+        <p>对外输出变量<br>module.exports = variable;<br>引入其他模块输出的对象<br>var foo = require(‘other_module’);</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/hexo搭建博客/" data-id="cjs1617fp0009dbfyh3s9y2m0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/01/commonJS/" data-id="cjstr3tbm0006hyfyhuhzywh0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -285,35 +238,31 @@
 
 
   
-    <article id="post-页面渲染原理" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-vue" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/页面渲染原理/" class="article-date">
-  <time datetime="2019-01-03T06:57:38.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/02/25/vue/" class="article-date">
+  <time datetime="2019-02-25T06:07:41.000Z" itemprop="datePublished">2019-02-25</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/页面渲染原理/">页面渲染原理</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.解析html构建DOM树<br>2.解析CSS构建CSS规则树<br>3.DOM和CSSOM合并后形成render tree<br>4.浏览器开始布局<br>5.浏览器开始把内容画到屏幕上</p>
-<p>页面某个部分发生变化会影响布局而进行重排<br>页面改变颜色会引起重绘</p>
+        <p>created 拿不到DOM元素   mounted 可以<br>this.$refs  获取元素  性能更好<br>vue传递属性  props:[‘’,’’]</p>
+<p>watch:{<br>    “$route”:”disabledScroll”<br>}</p>
+<p>disabledScroll是方法   监听路由变化执行对应方法</p>
+<p>this.$nextTick 可以立即获得更新之后的DOM 应为vue数据修改之后不会立即执行DOM渲染</p>
+<p>ref  <div ref="msgDiv"></div><br>this.$refs.msgDiv.innerHTML</p>
+<p>filterTableList:function() {  //搜索过滤功能<br>    let _this = this<br>    return this.tableList.filter(function(item) {<br>        return item.tableName.indexOf(_this.inputTableName) !== -1<br>    })<br>}</p>
+<p>方法名不能带.  所以只能写成<a href="state,status">type.LOGINSTATUS</a> {   //改变登录状态<br>        state.isLogin = status<br>    }<br>形式</p>
+<p>$t vue国际化的语法</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/页面渲染原理/" data-id="cjs1617g6000jdbfyzqyv9a4a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/25/vue/" data-id="cjstr3tbx000chyfynxk6d7z8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,33 +272,24 @@
 
 
   
-    <article id="post-事件循环" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-node" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/事件循环/" class="article-date">
-  <time datetime="2019-01-03T06:57:26.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/02/24/node/" class="article-date">
+  <time datetime="2019-02-24T15:05:34.000Z" itemprop="datePublished">2019-02-24</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/事件循环/">事件循环</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>process.exit(非0)表示执行失败</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/事件循环/" data-id="cjs1617fr000adbfywo1qyevo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/24/node/" data-id="cjstr3tbv000bhyfyxfsn7jp2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,34 +299,24 @@
 
 
   
-    <article id="post-BTC-块级格式化上下文" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-webpack" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/BTC-块级格式化上下文/" class="article-date">
-  <time datetime="2019-01-03T06:57:16.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/02/24/webpack/" class="article-date">
+  <time datetime="2019-02-24T13:47:45.000Z" itemprop="datePublished">2019-02-24</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/BTC-块级格式化上下文/">BTC 块级格式化上下文</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>块级格式化上下文，可解决边距重叠，包裹浮动元素等问题</p>
+        <p>npm init   生成package.json文件<br>webpack.base.conf.js  组成:入口文件entry  出口文件output  webpack只识别js文件,所以要对非js文件进行转换，需要loader<br>还有插件  以及resolve  配置import export 的一些配置<br>new webpack.HotModuleReplacementPlugin()  修改代码不需要重新刷新页面<br>new webpack.NoEmitOnErrorsPlugin()  webpack编译错误的时候，中断打包操作，防止错误代码打包进文件中<br>new HtmlWebpackPlugin({              自动生成一个H5文件<br>      filename: ‘index.html’,<br>      template: ‘index.html’,<br>      inject: true<br>    })<br>new CopyWebpackPlugin  比如打包完之后需要把打包的文件复制到dist里面<br>new webpack.optimize.CommonsChunkPlugin({//抽取公共的模块<br>portfinder.getPort  端口被占用时重新设置端口</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/BTC-块级格式化上下文/" data-id="cjs1617f70002dbfyfmd8igmd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/24/webpack/" data-id="cjstr3tc1000ehyfytuhwlrkx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,34 +326,24 @@
 
 
   
-    <article id="post-React性能优化" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-jquery" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/03/React性能优化/" class="article-date">
-  <time datetime="2019-01-03T06:56:52.000Z" itemprop="datePublished">2019-01-03</time>
+    <a href="/2019/02/12/jquery/" class="article-date">
+  <time datetime="2019-02-12T03:13:53.000Z" itemprop="datePublished">2019-02-12</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/React性能优化/">React性能优化</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>shouldComponentUpdate()  如果知道某些组件不需要更新，return false来跳过整个渲染过程</p>
+        <p>$(‘.page’).trigger(‘onLeave’)  主动触发事件</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/React性能优化/" data-id="cjs1617fg0006dbfyc9zlg6by" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/12/jquery/" data-id="cjstr3tbo0008hyfyruhbr63b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -456,7 +376,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -469,23 +389,23 @@
       <ul>
         
           <li>
-            <a href="/2019/02/11/JS基础知识/">(no title)</a>
+            <a href="/2019/03/03/React/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/05/Redux/">(no title)</a>
+            <a href="/2019/03/03/ES6/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/04/正则/">正则</a>
+            <a href="/2019/03/03/vuex/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/杂项/">杂项</a>
+            <a href="/2019/03/03/vue-router/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/Git/">Git</a>
+            <a href="/2019/03/02/css/">(no title)</a>
           </li>
         
       </ul>

@@ -14,7 +14,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="JS中使用typeof能得到的哪些类型？    string number boolean undefined object  function  一共6种 JS变量按照存储方式分为哪些类型，并描述其特点值类型    var a = 100;    b = a;    a = 200;    console.log(b);  //b = 100    引用类型    var obj1 = {a:1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-11T09:34:50.000Z">
+<meta property="og:updated_time" content="2019-03-04T02:52:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title">
 <meta name="twitter:description" content="JS中使用typeof能得到的哪些类型？    string number boolean undefined object  function  一共6种 JS变量按照存储方式分为哪些类型，并描述其特点值类型    var a = 100;    b = a;    a = 200;    console.log(b);  //b = 100    引用类型    var obj1 = {a:1">
@@ -98,13 +98,21 @@
 <p>ajax<br>    var xhr = new XMLHttpRequest();<br>    xhr.open(‘GET’,’/api’,false);<br>    xhr.onreadystatechange = function() {<br>    if(xhr.readystate === 4) {//表示请求已完成<br>    if(xhr.state === 200) {<br>    console.log(xhr.responseText);<br>    }<br>    }<br>    }</p>
 <p>但是有三个标签允许跨域加载资源<br>    <img><br>    <link><script></p>
 <p>iOS safari隐藏模式下<br>    localStorage.getItem 会报错<br>    建议统一使用try-catch封装</p>
-<p>git diff 只能看改的文件<br>git是分为三部分，一部分是你自己的文件，另外一个是缓存区，最后一个是本地库。当你修改了自己的文件后，你会git add xx将修改保存到缓存区，然后再用commit推送修改到本地库中。</p>
-<p>CommonJS不会异步加载JS，而是同步一次性加载出来</p>
+<p>CommonJS不会异步加载JS，而是同步一次性加载出来<br>Date.parse()  解析一个日期时间字符串，并返回 1970/1/1 午夜距离该日期时间的毫秒数</p>
+<p>parseInt  解析字符串返回一个整数</p>
+<p>function Parent() {<br>            this.name = “parent”;<br>        }<br>function Child() {<br>    Parent.call(this);<br>    this.name = “child”;<br>    Child.prototype = Object.create(Parent.prototype);<br>    Child.prototype.constructor = “Child”;<br>}</p>
+<p>this原理:this指针: 包裹this的函数是在哪个环境运行的，this就指向哪个环境 由于js函数是单独运行的，所以它可能有不同的执行环境，如果需要在函数体内部获取当前执行环境，就需要通过this来获取</p>
+<p>函数柯里化<br>function add(a,b,c) {<br>        return a+b+c<br>    }<br>function add(a) {<br>    return function(b) {<br>        return function(c) {<br>            return a + b + c<br>        }<br>    }<br>}<br>add(1,2,3)<br>add(1)(2)(3)</p>
+<p>csrf:在攻击者网站上伪造请求，执行用户不知道的操作  防范:验证码<br>xss: 提交js脚本   防范:过滤用户输入的内容<br>点击劫持:在攻击者网站上嵌入透明iframe 防范: 设置同源访问</p>
+<p>1.jsonp:利用script标签不受同源限制，urlj加个参数callback,客户端定义callback函数接收传过来的数据，服务端返回callback  callback的参数是json数据。<br>2.cors:Access-Control-Allow-Origin  withCredentials(可以发送cookie和http认证信息)</p>
+<p>页面渲染原理<br>1.解析html构建DOM树<br>2.解析CSS构建CSS规则树<br>3.DOM和CSSOM合并后形成render tree<br>4.浏览器开始布局<br>5.浏览器开始把内容画到屏幕上</p>
+<p>页面某个部分发生变化会影响布局而进行重排<br>页面改变颜色会引起重绘</p>
+<p>GUI渲染线程与JS引擎线程互斥</p>
 </script></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/11/JS基础知识/" data-id="cjs1617fc0004dbfygv29qp2e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/11/JS基础知识/" data-id="cjstr3taz0002hyfyxr07rzvv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,6 +120,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/02/12/sass/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/05/Redux/" id="article-nav-older" class="article-nav-link-wrap">
@@ -140,7 +157,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -153,23 +170,23 @@
       <ul>
         
           <li>
-            <a href="/2019/02/11/JS基础知识/">(no title)</a>
+            <a href="/2019/03/03/React/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/05/Redux/">(no title)</a>
+            <a href="/2019/03/03/ES6/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/04/正则/">正则</a>
+            <a href="/2019/03/03/vuex/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/杂项/">杂项</a>
+            <a href="/2019/03/03/vue-router/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/01/03/Git/">Git</a>
+            <a href="/2019/03/02/css/">(no title)</a>
           </li>
         
       </ul>
